@@ -1,0 +1,47 @@
+group 'de.kaleidox'
+version '0.10'
+
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+mainClassName = 'de.kaleidox.BotThatShowsChat'
+
+wrapper {
+    gradleVersion = '5.2'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.incremental = true
+}
+
+repositories {
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    // Javacord
+    implementation 'org.javacord:javacord:3.0.+'
+
+    // Javacord Utilities
+    //implementation('de.kaleidox:javacord-utilities:1.0.2rev1')
+    //        { exclude group: 'org.javacord' }
+    implementation('com.github.burdoto:javacord-utilities:dea7af816d')
+            { exclude group: 'org.javacord' }
+
+    // IRC Module
+    implementation 'pircbot:pircbot:1.5.0'
+
+    // BotList artifact
+    implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.1'
+
+    // Other dependencies
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.3'
+
+    // Runtime logger dependency
+    runtimeOnly 'org.apache.logging.log4j:log4j-core:2.11.0'
+}
