@@ -40,7 +40,7 @@ dependencies {
     implementation 'de.kaleidox:discordbotlist-stats-javacord:0.1.1'
 
     // Other dependencies
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.0.pr3'
 
     // Runtime logger dependency
     runtimeOnly 'org.apache.logging.log4j:log4j-core:2.11.0'
