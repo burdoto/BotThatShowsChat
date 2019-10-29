@@ -20,7 +20,7 @@ public enum TwitchCommands {
             usage = "link <Twitch-Channel>",
             description = "Toggles a link of a Twitch-Channel to a text channel.",
             enablePrivateChat = false,
-            requiredArguments = 1,
+            minimumArguments = 1,
             requiredDiscordPermission = PermissionType.MANAGE_SERVER
     )
     public EmbedBuilder link(ServerTextChannel stc, String[] args) {
