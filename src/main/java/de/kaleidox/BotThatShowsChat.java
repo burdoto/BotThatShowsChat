@@ -69,15 +69,15 @@ public class BotThatShowsChat {
             PROP = new ServerPropertiesManager(FileProvider.getFile("data/props.json"));
             PROP.usePropertyCommand(null, CMD);
             PROP.register("bot.prefix", CMD.prefixes[0])
-                    .setDisplayName("Custom Command Prefix")
-                    .setDescription("A custom prefix to call bot commands with");
+                    .withDisplayName("Custom Command Prefix")
+                    .withDescription("A custom prefix to call bot commands with");
             PROP.register("bot.commandchannel", -1)
-                    .setDisplayName("Command Channel ID")
-                    .setDescription("The ID of the only channel where the commands should be executed.\n" +
+                    .withDisplayName("Command Channel ID")
+                    .withDescription("The ID of the only channel where the commands should be executed.\n" +
                             "If the ID is invalid, every channel is accepted.");
 
-            CMD.useCustomPrefixes(PROP.getProperty("bot.prefix"));
-            CMD.useCommandChannel(PROP.getProperty("bot.commandchannel"));
+            CMD.withCustomPrefixProvider(PROP.getProperty("bot.prefix"));
+            CMD.withCommandChannelProvider(PROP.getProperty("bot.commandchannel"));
             CMD.useBotMentionAsPrefix = true;
 
             IRC = new IRCBot();
