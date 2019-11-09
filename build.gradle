@@ -1,4 +1,4 @@
-group 'de.kaleidox'
+group 'de.comroid'
 version '0.10'
 
 apply plugin: 'application'
