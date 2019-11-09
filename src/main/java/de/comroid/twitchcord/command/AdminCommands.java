@@ -1,6 +1,6 @@
-package de.kaleidox.twitchcord.command;
+package de.comroid.twitchcord.command;
 
-import de.kaleidox.javacord.util.commands.Command;
+import de.comroid.javacord.util.commands.Command;
 
 import org.javacord.api.entity.user.User;
 

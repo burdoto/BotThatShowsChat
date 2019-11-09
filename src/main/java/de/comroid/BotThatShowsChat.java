@@ -1,4 +1,4 @@
-package de.kaleidox;
+package de.comroid;
 
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -7,19 +7,20 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import de.comroid.eval.EvalCommand;
+import de.comroid.twitchcord.TwitchCore;
+import de.comroid.twitchcord.command.AdminCommands;
+import de.comroid.twitchcord.command.BasicCommands;
+import de.comroid.twitchcord.command.TwitchCommands;
+import de.comroid.twitchcord.irc.IRCBot;
+import de.comroid.util.files.FileProvider;
+import de.comroid.util.files.OSValidator;
 import de.kaleidox.botstats.BotListSettings;
 import de.kaleidox.botstats.javacord.JavacordStatsClient;
 import de.kaleidox.botstats.model.StatsClient;
-import de.kaleidox.javacord.util.commands.CommandHandler;
-import de.kaleidox.javacord.util.server.properties.ServerPropertiesManager;
-import de.kaleidox.javacord.util.ui.embed.DefaultEmbedFactory;
-import de.kaleidox.twitchcord.TwitchCore;
-import de.kaleidox.twitchcord.command.AdminCommands;
-import de.kaleidox.twitchcord.command.BasicCommands;
-import de.kaleidox.twitchcord.command.TwitchCommands;
-import de.kaleidox.twitchcord.irc.IRCBot;
-import de.kaleidox.util.files.FileProvider;
-import de.kaleidox.util.files.OSValidator;
+import de.comroid.javacord.util.commands.CommandHandler;
+import de.comroid.javacord.util.server.properties.ServerPropertiesManager;
+import de.comroid.javacord.util.ui.embed.DefaultEmbedFactory;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
@@ -27,8 +28,6 @@ import org.javacord.api.entity.activity.ActivityType;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.UserStatus;
 import org.javacord.api.util.logging.ExceptionLogger;
-
-import static de.kaleidox.util.files.FileProvider.getFile;
 
 public class BotThatShowsChat {
     public final static Color THEME = new Color(0x6441a5);
@@ -41,7 +40,7 @@ public class BotThatShowsChat {
 
     static {
         try {
-            File file = getFile("login/token.cred");
+            File file = FileProvider.getFile("login/token.cred");
             System.out.println("Looking for token file at " + file.getAbsolutePath());
             API = new DiscordApiBuilder()
                     .setToken(new BufferedReader(new FileReader(file)).readLine())
@@ -65,6 +64,8 @@ public class BotThatShowsChat {
             CMD.registerCommands(BasicCommands.INSTANCE);
             CMD.registerCommands(TwitchCommands.INSTANCE);
             CMD.registerCommands(AdminCommands.INSTANCE);
+            
+            CMD.registerCommands(EvalCommand.INSTANCE);
 
             PROP = new ServerPropertiesManager(FileProvider.getFile("data/props.json"));
             PROP.usePropertyCommand(null, CMD);

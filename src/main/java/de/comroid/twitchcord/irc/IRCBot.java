@@ -1,6 +1,6 @@
-package de.kaleidox.twitchcord.irc;
+package de.comroid.twitchcord.irc;
 
-import de.kaleidox.twitchcord.TwitchCore;
+import de.comroid.twitchcord.TwitchCore;
 
 import org.jibble.pircbot.PircBot;
 
