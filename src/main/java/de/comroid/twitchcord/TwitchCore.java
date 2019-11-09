@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 import de.comroid.BotThatShowsChat;
 import de.comroid.javacord.util.ui.embed.DefaultEmbedFactory;
 import de.comroid.util.files.FileProvider;
-import de.kaleidox.util.interfaces.Initializable;
+import de.comroid.util.interfaces.Initializable;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
