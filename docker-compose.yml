@@ -1,0 +1,14 @@
+version: "2.0"
+
+services:
+    btsc:
+        image: btsc:public
+        container_name: btsc-public
+        restart: on-failure
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - /var/bots/BotThatShowsChat:/app/data:rw
+        working_dir: /app
+        entrypoint: /app/binaries/bin/BotThatShowsChat
