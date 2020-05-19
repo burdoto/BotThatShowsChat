@@ -8,7 +8,7 @@ import static java.io.File.separator;
 import static java.io.File.separatorChar;
 
 public class FileProvider {
-    private final static String PREFIX = "/app/data/";
+    private final static String PREFIX = "/var/dcb/btsc/";
 
     public static File getFile(String subPath) {
         final String path = (PREFIX + subPath).replace('/', separatorChar);
