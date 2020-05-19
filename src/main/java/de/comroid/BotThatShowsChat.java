@@ -82,7 +82,7 @@ public class BotThatShowsChat {
             CMD.useBotMentionAsPrefix = true;
 
             IRC = new IRCBot();
-            IRC.changeNick("BotThatShowsChat");
+            IRC.changeNick("discord_btsc");
             IRC.connect("irc.chat.twitch.tv", 6667, new BufferedReader(new FileReader(FileProvider.getFile("login/twitch.cred"))).readLine());
 
             TwitchCore.INSTANCE.init();
